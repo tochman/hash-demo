@@ -85,4 +85,14 @@ describe MyHash do
   it 'fetches the coordinate below' do
     expect(subject.get_down_n_coord(:C3)).to eq :C4
   end
+  
+  context '#get_coord' do 
+    it 'fetches the coord below' do 
+      expect(subject.get_coord(:A1, :down)).to eq :A2
+    end
+    
+    it 'fetches the coord to the right' do 
+      expect(subject.get_coord(:A1, :right)).to eq :B1
+    end
+  end
 end

@@ -58,6 +58,12 @@ class MyHash
     self.grid[right_n] == 'w' && self.grid[left_n] == 'w'
   end
   
+  def get_coord(coord, direction)
+    #get_coord(:A1, :down)
+    method_to_run = self.method("get_#{direction}_n_coord".to_sym)
+    method_to_run.call coord
+  end
+  
   def get_right_n_coord(coord)
     #byebug
     l = (coord[0].codepoints.first + 1).chr 
