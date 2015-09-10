@@ -69,4 +69,20 @@ describe MyHash do
     subject.grid[:E1] = 's'
     expect(subject.place_ship(:E1)).to eq 'can not do that' 
   end
+  
+  it 'fetches the coordinate to the left' do
+    expect(subject.get_left_n_coord(:C3)).to eq :B3
+  end
+  
+  it 'fetches the coordinate to the right' do
+    expect(subject.get_right_n_coord(:C3)).to eq :D3
+  end
+  
+  it 'fetches the coordinate above' do
+    expect(subject.get_up_n_coord(:C3)).to eq :C2
+  end
+  
+  it 'fetches the coordinate below' do
+    expect(subject.get_down_n_coord(:C3)).to eq :C4
+  end
 end

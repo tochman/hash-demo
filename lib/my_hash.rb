@@ -59,12 +59,26 @@ class MyHash
   end
   
   def get_right_n_coord(coord)
-    coord.next.to_sym
+    #byebug
+    l = (coord[0].codepoints.first + 1).chr 
+    coord.to_s.gsub(coord[0],l).to_sym
   end
   
   def get_left_n_coord(coord)
     l = (coord[0].codepoints.first - 1).chr 
     coord.to_s.gsub(coord[0],l).to_sym
+  end
+  
+  def get_down_n_coord(coord)
+    #byebug
+    n = coord[1,2].next
+    coord.to_s.gsub(coord[1,2],n).to_sym
+  end
+  
+  def get_up_n_coord(coord)
+    #byebug
+    n = (coord[1,2].to_i) -1
+    coord.to_s.gsub(coord[1,2],n.to_s).to_sym
   end
   
 end
