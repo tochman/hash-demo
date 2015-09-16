@@ -33,6 +33,20 @@ class MyHash
     table.render
   end
   
+  def as_html
+    rows = get_grid_values
+    html = '<table><tr><th>-</th>'
+    [*'1'..'10'].each { |i| html.concat "<th>#{i}</th>" }
+    html.concat '</tr>'
+    rows.each do |row|
+      html.concat '<tr>'
+      row.each { |cell| html.concat "<td>#{cell}</td>" }
+      html.concat '</tr>'
+    end
+    html.concat '</table>'
+    html
+  end
+  
   def get_grid_values
     grid_values = []
     [*'A'..'J'].each do |letter|
@@ -48,7 +62,7 @@ class MyHash
     if self.grid[coord] == 'w'
       self.grid[coord] = 's'
     else
-      'can not do that'
+      raise 'can not do that'
     end
   end
   
