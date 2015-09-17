@@ -47,6 +47,20 @@ class MyHash
     html
   end
   
+  require 'builder'
+  def builder
+    rows = get_grid_values
+    html = Builder::XmlMarkup.new(indent: 2)
+    html.table {
+        html.tr { [*'0'..'10'].each {|h| html.th(h)} }
+        rows.each do |row|
+          html.tr { row.each { |value| html.td(value) }}
+        end
+      }
+    
+  end
+  
+  
   def get_grid_values
     grid_values = []
     [*'A'..'J'].each do |letter|
